@@ -25,7 +25,9 @@ ActiveRecord::Schema.define(version: 20180420150941) do
     t.datetime "updated_at", null: false
     t.integer "job_id"
     t.integer "volume_id"
+    t.integer "user_id"
     t.index ["job_id"], name: "index_archives_on_job_id"
+    t.index ["user_id"], name: "index_archives_on_user_id"
     t.index ["volume_id"], name: "index_archives_on_volume_id"
   end
 
@@ -45,7 +47,9 @@ ActiveRecord::Schema.define(version: 20180420150941) do
   end
 
   create_table "logs", force: :cascade do |t|
-    t.string "description"
+    t.integer "action"
+    t.integer "model"
+    t.integer "user"
     t.datetime "created_at", null: false
   end
 
@@ -71,6 +75,8 @@ ActiveRecord::Schema.define(version: 20180420150941) do
     t.integer "capacity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_volumes_on_user_id"
   end
 
 end

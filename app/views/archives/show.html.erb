@@ -1,4 +1,23 @@
-<p id="notice"><%= notice %></p>
-
+<h2 class="title is-2"><%= archive.name %></h2>
+<span> <span><%= archive.size %></span>
+ | <%= archive.type_archive %></span>
+ <span>Diretorio >> <%= archive.directory %></span>
+<div class="">
+  <h3 class="title is-3">Dados Especificos</h3>
+  <span><strong>Resolução: </strong>   <%= archive.resolution %></span>
+  <span>
+    <strong>
+      Ambiente
+    </strong>
+    <%= archive.environment %>
+  </span>
+  <span>
+    <strong>
+      Description:
+    </strong>
+    <%= archive.description %>
+  </span>
+</div>
+<%= archive.volume %>
 <%= link_to 'Edit', edit_archive_path(@archive) %> |
 <%= link_to 'Back', archives_path %>

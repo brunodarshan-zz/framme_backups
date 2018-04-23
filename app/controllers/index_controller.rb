@@ -1,4 +1,6 @@
 class IndexController < ApplicationController
-  def index  
+  def index
+    @logs = Log.all
+    @volumes = Volume.all
   end
 end
