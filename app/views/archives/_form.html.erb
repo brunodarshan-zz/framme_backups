@@ -1,0 +1,61 @@
+
+<%= form_with(model: @archive, html: {class: "form"}) do |f| %>
+
+    <div class="field">
+      <label for="name">Name</label>
+      <%= f.text_field :name, class: :input %>
+    </div>
+
+    <div class="field">
+      <label for="size">Tamanho</label>
+      <%= f.text_field :size, class: :input %>
+    </div>
+
+
+    <div class="field">
+      <div class="select">
+        <label for="type_archive">Tipo</label>
+        <%= f.select :type_archive, collection: Archive.type_archives.keys.map { | t | [t.upcase, t ] } %>
+      </div>
+    </div>
+
+<br>
+    <div class="field">
+      <div class="select">
+        <label for="resolution">Resolução</label>
+        <%= f.select :resolution, collection: Archive.resolutions.keys %>
+      </div>
+    </div>
+<br>
+    <div class="field">
+      <div class="select">
+        <label for="environment">Ambiente</label>
+        <%= f.select :environment, collection: Archive.environments.keys.map { | t | [t.upcase, t] } %>
+      </div>
+    </div>
+<br>
+<div class="field">
+  <label for="directory">Diretório/Pasta</label>
+  <%= f.text_field :directory, class: :input%>
+</div>
+    <div class="field">
+      <div class="select">
+        <label for="volume_id">Volume</label>
+        <%= f.select :volume_id,collection: Volume.all.map {| v | [ v.name, v.id ] } %>
+      </div>
+    </div>
+
+<br>
+
+    <div class="field">
+      <%= f.text_area :description, class: :textarea %>
+    </div>
+
+
+
+
+<br>
+  <div class="form-actions">
+    <%= f.button :submit, class: [:button, %s{is-link}] %>
+  </div>
+<% end %>

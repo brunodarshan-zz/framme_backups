@@ -55,3 +55,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Added at 2018-04-20 10:09:29 -0300 by imacdecriacao:
 gem "devise", "~> 4.4"
+
+# Added at 2018-04-21 14:53:53 -0300 by darshan:
+gem "simple_form", "~> 4.0"

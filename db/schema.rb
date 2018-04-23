@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 20180420150941) do
 
   create_table "archives", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "type", default: 0
+    t.integer "type_archive"
     t.integer "resolution", default: 0
     t.integer "environment"
     t.integer "status"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20180420150941) do
 
   create_table "volumes", force: :cascade do |t|
     t.string "name"
-    t.integer "type"
+    t.integer "type_volume"
     t.integer "in_use"
     t.integer "capacity"
     t.datetime "created_at", null: false

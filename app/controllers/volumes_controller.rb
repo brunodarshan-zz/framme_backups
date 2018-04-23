@@ -30,11 +30,9 @@ class VolumesController < ApplicationController
       if @volume.save
         format.html { redirect_to @volume, notice: 'Volume was successfully created.' }
         format.json { render :show, status: :created, location: @volume }
-        LogService::Write.action('Create','volume', current_user.email)
       else
         format.html { render :new }
         format.json { render json: @volume.errors, status: :unprocessable_entity }
-        LogService::Write.action('Try create', 'volume', current_user.email )
       end
     end
   end
@@ -46,11 +44,9 @@ class VolumesController < ApplicationController
       if @volume.update(volume_params)
         format.html { redirect_to @volume, notice: 'Volume was successfully updated.' }
         format.json { render :show, status: :ok, location: @volume }
-        LogService::Write.action('Update', 'volume', current_user.email)
       else
         format.html { render :edit }
         format.json { render json: @volume.errors, status: :unprocessable_entity }
-        LogService::Write.action('Try Update', current_user.email)
       end
     end
   end
@@ -61,7 +57,6 @@ class VolumesController < ApplicationController
     @volume.destroy
     respond_to do |format|
       format.html { redirect_to volumes_url, notice: 'Volume was successfully destroyed.' }
-      LogService::Write.action('Destroyed', 'volume', current_user.email)
       format.json { head :no_content }
     end
   end
@@ -74,6 +69,8 @@ class VolumesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def volume_params
-      params.fetch(:volume, {})
+      params.require(:volume).permit(
+        :name, :type_volume, :in_use, :capacity 
+      )
     end
 end

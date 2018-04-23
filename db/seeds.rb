@@ -5,3 +5,26 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+tera_16 = 16777216
+
+drobo = Volume.create(
+  name: 'DROBO',
+  type_volume: 'RAID',
+  in_use: 8388608,
+  capacity: tera_16*4
+)
+
+raid_pauliram = Volume.create(
+  name: 'RAID Pauliram',
+  type_volume: 'RAID',
+  in_use: 0,
+  capacity: tera_16
+)
+
+raid_bruno_costa = Volume.create(
+  name: 'RAID Bruno Costa',
+  type_volume: 'RAID',
+  in_use: 0,
+  capacity: tera_16
+)

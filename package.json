@@ -1,5 +1,7 @@
 {
   "name": "backups",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bulma": "^0.7.1"
+  }
 }

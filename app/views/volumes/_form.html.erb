@@ -1,17 +1,29 @@
-<%= form_with(model: volume, local: true) do |form| %>
-  <% if volume.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(volume.errors.count, "error") %> prohibited this volume from being saved:</h2>
 
-      <ul>
-      <% volume.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= simple_form_for(@volume) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <div class="field">
+      <%= f.input :name, class: :input %>
     </div>
-  <% end %>
+    <div class="field">
+      <div class="select">
+        <%= f.input :type_volume, as: :select, collection: Volume.type_volumes.keys ,class: :input %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="field">
+      <%= f.input :capacity %>
+    </div>
+    <div class="field">
+      <%= f.input :in_use %>
+    </div>
+
+  </div>
+
+
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>
