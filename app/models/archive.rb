@@ -4,6 +4,7 @@ class Archive < ApplicationRecord
 
   before_update :include_size_to_volume
   before_create :include_size_to_volume
+  before_save :include_size_to_volume
 
   validates :size, has_space_in_volume: true
 
@@ -28,13 +29,8 @@ class Archive < ApplicationRecord
   private
   def include_size_to_volume
       value = volume.in_use + self.size
-      if volume.space_available >= self.size
-        volume.update(in_use: value)
-        return true
-      else
-        volume.errors.add(:in_use, msg: "Archive is greater than the available space on the volume.")
-      end
-      nil
+      # if volume.space_available >= self.size
+      volume.update(in_use: value)
   end
 
 end
