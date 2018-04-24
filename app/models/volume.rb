@@ -16,7 +16,7 @@ class Volume < ApplicationRecord
   end
 
   def to_s
-    "#{name.upcase}"
+    self.name
   end
 
 end
