@@ -1,40 +1,27 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1>Volumes</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th >
-        Nome
-      </th>
-      <th>
-        Tipo
-      </th>
-      <th>
-        Capacidade
-      </th>
-    </tr>
-  </thead>
 
-  <tbody>
     <% @volumes.each do |volume| %>
-    <tr>
-      <td>
-        <%= volume.name %>
-      </td>
-      <td>
-        <%= volume.type_volume %>
-      </td>
-      <td>
-        <%= volume.in_use %> de <%= volume.capacity %>
-      </td>
-    </tr>
-      <tr>
-        <td><%= link_to 'Show', volume %></td>
-        <td><%= link_to 'Edit', edit_volume_path(volume) %></td>
-        <td><%= link_to 'Destroy', volume, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+
+      <div class="columns">
+        <div class="column is-three-quarters">
+          <h5 class="title is-5">  <%= volume.name %></h5>
+
+          <%= volume.type_volume %>
+
+          <%= volume.in_use %> de <%= volume.get_capacity %>
+        </div>
+        <div class="column">
+          <%= link_to 'Show', volume, class: "button is-link" %>
+          <%= link_to 'Edit', edit_volume_path(volume), class: :button %>
+          <%= link_to 'Destroy', volume, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
+
+        </div>
+      </div>
+
+<hr>
     <% end %>
   </tbody>
 </table>

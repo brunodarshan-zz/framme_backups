@@ -7,6 +7,7 @@ class Archive < ApplicationRecord
   before_save :include_size_to_volume
 
   validates :size, has_space_in_volume: true
+  validates :name, :size, :type_archive, :environment, :resolution, presence: true
 
   enum type_archive: [
     :video,
@@ -25,6 +26,30 @@ class Archive < ApplicationRecord
     %s{4k},
     :nome
   ]
+
+
+  def get_size
+    if self.size >= 1024
+      return "#{self.size/1024} GB"
+    end
+    "#{self.size} MB"
+  end
+
+  def icon_class
+    "fa fa-#{type_archive}"
+  end
+
+  def icon_class_medium
+    "#{icon_class} fa-2x"
+  end
+
+  def icon_class_big
+    "#{icon_class} fa-4x"
+  end
+
+  def get_volume
+    "#{self.volume.to_s.upcase}"
+  end
 
   private
   def include_size_to_volume

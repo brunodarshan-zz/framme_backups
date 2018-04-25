@@ -6,13 +6,22 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+
   </head>
 
   <body>
+    <%= render 'layouts/tabs' %>
     <section class="section">
       <div class="container">
-        <p id="notice" class="message"><%= notice %></p>
+        <%unless notice.nil? %> <div class="message">
+          <div class="message body">
+            <p><%= notice %></p>
+          </div>
+        </div><%end%>
         <%= yield %>
+      </div>
       </div>
     </section>
   </body>

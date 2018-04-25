@@ -25,9 +25,8 @@ class ArchivesController < ApplicationController
   # POST /archives.json
   def create
     @archive = Archive.new(archive_params)
-    @volume = Volume.find(@archive.volume_id)
     respond_to do |format|
-      if VolumeManagerService.set_archive(@archive, @volume)
+      if @archive.save
         format.html { redirect_to @archive, notice: 'Archive was successfully created.' }
         format.json { render :show, status: :created, location: @archive }
       else
@@ -41,7 +40,7 @@ class ArchivesController < ApplicationController
   # PATCH/PUT /archives/1.json
   def update
     respond_to do |format|
-      if VolumeManagerService.update_archive(@archive, archive_params)
+      if @archive.update(archive_params)
         format.html { redirect_to @archive, notice: 'Archive was successfully updated.' }
         format.json { render :show, status: :ok, location: @archive }
       else
@@ -54,7 +53,7 @@ class ArchivesController < ApplicationController
   # DELETE /archives/1
   # DELETE /archives/1.json
   def destroy
-    VolumeManagerService.destroy_archive(@archive)
+    @archive.destroy
     respond_to do |format|
       format.html { redirect_to archives_url, notice: 'Archive was successfully destroyed.' }
       format.json { head :no_content }

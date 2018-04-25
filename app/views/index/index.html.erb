@@ -1,23 +1,25 @@
 <div class="columns">
-  <div class="column is-one-quarter">
+  <div class="column">
     <div class="card">
       <div class="card-content">
         <h2 class="title is-2">Volumes</h2>
         <span><%= Volume.count %> volumes cadastrados no sistema.</span>
       </div>
       <div class="card-footer">
+        <%= link_to "Cadastrar", new_volume_path, class: "card-footer-item" %>
         <%= link_to "Ver todos", volumes_path, class: "card-footer-item" %>
       </div>
     </div>
   </div>
 
-  <div class="column is-one-quarter">
+  <div class="column ">
     <div class="card">
       <div class="card-content">
         <h2 class="title is-2">Arquivos</h2>
         <span><%= Archive.count %> arquivo cadastrados no sistema.</span>
       </div>
       <div class="card-footer">
+        <%= link_to "Cadastrar", new_archive_path, class: "card-footer-item" %>
         <%= link_to "Ver todos", archives_path, class: "card-footer-item" %>
       </div>
     </div>

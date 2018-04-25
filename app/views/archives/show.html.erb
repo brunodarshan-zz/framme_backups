@@ -1,23 +1,28 @@
-<h2 class="title is-2"><%= archive.name %></h2>
-<span> <span><%= archive.size %></span>
- | <%= archive.type_archive %></span>
- <span>Diretorio >> <%= archive.directory %></span>
-<div class="">
-  <h3 class="title is-3">Dados Especificos</h3>
-  <span><strong>Resolução: </strong>   <%= archive.resolution %></span>
-  <span>
-    <strong>
-      Ambiente
-    </strong>
-    <%= archive.environment %>
-  </span>
-  <span>
-    <strong>
-      Description:
-    </strong>
-    <%= archive.description %>
-  </span>
+
+<div class="card">
+  <div class="card-header">
+
+        <h4 class="card-header-title title is-3">
+          &nbsp;
+          <i class="<%= @archive.icon_class%>"></i> &nbsp;
+          <%= @archive.name %></h4>
+        <div class="card-header-icon">
+          <%= link_to 'Editar', edit_archive_path(@archive), class: "button is-link" %> &nbsp;
+          <%= link_to 'Todos os Arquivos', archives_path, class: "button" %>
+        </div>
+      </div>
+  <div class="card-content">
+
+          <p>Tipo <%= @archive.type_archive %></p>
+
+          <p><strong>Tamanho: <%= @archive.get_size %></strong></p>
+
+          <p><strong>Resolução: </strong>   <%= @archive.resolution %></p>
+           <p><strong>Local/Diretório: </strong><%= @archive.directory %> </p>
+           <p><strong>Volume </strong> <%= link_to @archive.volume, @archive.volume %></p>
+          <p> <strong> Ambiente </strong> <%= @archive.environment.upcase %> </p>
+          <p> <strong> Descrição: </strong> <%= @archive.description %> </p>
+
+    </div>
+  </div>
 </div>
-<%= archive.volume %>
-<%= link_to 'Edit', edit_archive_path(@archive) %> |
-<%= link_to 'Back', archives_path %>

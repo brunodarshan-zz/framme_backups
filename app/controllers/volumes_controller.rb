@@ -70,7 +70,7 @@ class VolumesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def volume_params
       params.require(:volume).permit(
-        :name, :type_volume, :in_use, :capacity 
+        :name, :type_volume, :in_use, :capacity
       )
     end
 end

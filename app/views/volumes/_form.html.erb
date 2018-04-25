@@ -1,27 +1,46 @@
 
 <%= form_with(model: @volume, html: {class: :form }) do |f| %>
+<% if @volume.errors.any? %>
+  <% @volume.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+<% end%>
+
 
   <div class="form-inputs">
     <div class="field">
+      <label for="">Nome</label>
       <%= f.text_field :name, class: :input %>
     </div>
-    <div class="field">
-      <div class="select">
-        <%= f.select :type_volume, collection: Volume.type_volumes.keys, class: :input %>
+
+
+
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <div class="select">
+          <label for="">Tipo</label>
+          <%= f.select :type_volume, collection: Volume.type_volumes.keys.map { | t | [t.upcase, t ] } %>
+        </div>
       </div>
     </div>
-
-    <div class="field">
-      <%= f.text_field :capacity, class: :input %>
+    <div class="column">
+      <div class="field">
+      <label for="">Capacidade</label>
+        <%= f.text_field :capacity, class: :input %>
+      </div>
     </div>
-    <div class="field">
-      <%= f.text_field :in_use, class: :input %>
-    </div>
-      <%= f.hidden_field :user_id, value: current_user %>
+    <div class="column">
+      <div class="field">
+        <label for="">Espaço em Uso</label>
+        <%= f.text_field :in_use, class: :input %>
+      </div>
 
+    </div>
   </div>
 
 
+  </div>
   <div class="form-actions">
     <%= f.button :submit, class: "button is-primary" %>
   </div>
