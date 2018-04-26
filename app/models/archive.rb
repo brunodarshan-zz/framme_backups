@@ -1,5 +1,6 @@
 class Archive < ApplicationRecord
   belongs_to :volume
+  belongs_to :user
 
   enum type_archive: [
     :video,

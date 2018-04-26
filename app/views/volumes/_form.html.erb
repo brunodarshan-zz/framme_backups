@@ -22,6 +22,7 @@
       <label for="">Capacidade</label>
       <%= f.input :capacity , class: "form-control", label: false %>
     </div>
+    <%= f.input :user_id, as: :hidden , input_html: { value: if @volume.user_id.nil? then current_user.id else @volume.user_id end} %>
   </div>
 
   <%= f.button :submit, :class => 'btn-primary' %>

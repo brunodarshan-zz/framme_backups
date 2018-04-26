@@ -1,12 +1,18 @@
 <%- model_class = Volume -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
-<div class="row">
-  <div class="col-sm-12">
-    <%= render partial: 'form' %>
+  <div class="row">
+    <div class="col-sm-8"><h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+
+    </div>
+    <div class="col-sm-4">
+      <br>
+      <%= link_to t('.new', :default => t("helpers.links.new")),
+                  new_volume_path,
+                  :class => 'btn btn-primary' %>
+    </div>
   </div>
 </div>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -37,7 +43,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_volume_path,
-            :class => 'btn btn-primary' %>

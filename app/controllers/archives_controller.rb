@@ -28,7 +28,7 @@ class ArchivesController < ApplicationController
 
     respond_to do |format|
       if @archive.save
-        format.html { redirect_to @archive, notice: 'Archive was successfully created.' }
+        format.html { redirect_to @archive, notice: 'Arquivo foi salvo com sucesso.' }
         format.json { render :show, status: :created, location: @archive }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ArchivesController < ApplicationController
   def update
     respond_to do |format|
       if @archive.update(archive_params)
-        format.html { redirect_to @archive, notice: 'Archive was successfully updated.' }
+        format.html { redirect_to @archive, notice: 'Arquivo atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @archive }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class ArchivesController < ApplicationController
   def destroy
     @archive.destroy
     respond_to do |format|
-      format.html { redirect_to archives_url, notice: 'Archive was successfully destroyed.' }
+      format.html { redirect_to archives_url, notice: 'Arquivo foi deletado com sucesso' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class ArchivesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def archive_params
-      params.require(:archive).permit(:name, :size, :tipe_archive, :resolution, :environment, :description, :directory, :volume_id, :inserted_in)
+      params.require(:archive).permit(:name, :size, :tipe_archive, :resolution, :environment, :description, :directory, :volume_id, :inserted_in, :user_id)
     end
 end

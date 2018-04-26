@@ -1,4 +1,5 @@
 class Volume < ApplicationRecord
+  belongs_to :user
   has_many :archives
 
   enum type_volume: [

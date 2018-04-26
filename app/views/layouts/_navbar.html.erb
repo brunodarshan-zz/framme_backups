@@ -1,0 +1,24 @@
+<div class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">Backups</a>
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Arquivos", archives_path  %></li>
+        <li><%= link_to "Volume", volumes_path  %></li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li><a href="">Olá, <strong><%=current_user.username%></strong>!</a></li>
+          <li><%= link_to "Sair", destroy_user_session_path %></li>
+        <%end%>
+        <!-- <li><%= link_to "Volume", volumes_path  %></li> -->
+      </ul>
+    </div>
+  </div>
+</div>
