@@ -2,34 +2,36 @@ class Volume < ApplicationRecord
   has_many :archives
 
   enum type_volume: [
+    :RAID,
     :HD,
-    :FITA,
-    :RAID
+    :FITA
   ]
 
-  validates :name, :type_volume, :in_use, :capacity, presence: true
-  validates :in_use, less_than_capacity: true
-  validates :in_use, has_capacity_to_update_size: true, on: :update
-
-
+  validates :name, :type_volume, :capacity, presence: true
 
   def get_capacity
-    out_put = self.capacity * 1024
-    if out_put > 1023  ## verifica se é maior  que 1 GB
-      if out_put >= (1024**3) ## verifica se e maior igual que 1 TB
-        return  "#{ out_put / 1024**3  } TB"
-      end
-      return "#{ out_put } GB"
+    if (self.capacity / 1024 ) >= 1024
+      return "#{self.capacity / 1024 / 1024} TB"
     end
-    "#{ out_put } MB"
+    "#{self.capacity / 1024} Gb"
   end
 
   def space_available
     capacity - in_use
   end
 
-  def to_s
-    self.name
+  def in_use
+    archives.sum(:size)
   end
 
+  def get_icon
+    if type_volume == 'RAID'
+      return "fa fa-server"
+    end
+    return "fa fa-hdd"
+  end
+
+  def get_icon_medium
+    "#{get_icon} fa-2x"
+  end
 end

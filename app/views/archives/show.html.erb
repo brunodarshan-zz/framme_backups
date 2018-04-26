@@ -1,28 +1,35 @@
-
-<div class="card">
-  <div class="card-header">
-
-        <h4 class="card-header-title title is-3">
-          &nbsp;
-          <i class="<%= @archive.icon_class%>"></i> &nbsp;
-          <%= @archive.name %></h4>
-        <div class="card-header-icon">
-          <%= link_to 'Editar', edit_archive_path(@archive), class: "button is-link" %> &nbsp;
-          <%= link_to 'Todos os Arquivos', archives_path, class: "button" %>
-        </div>
-      </div>
-  <div class="card-content">
-
-          <p>Tipo <%= @archive.type_archive %></p>
-
-          <p><strong>Tamanho: <%= @archive.get_size %></strong></p>
-
-          <p><strong>Resolução: </strong>   <%= @archive.resolution %></p>
-           <p><strong>Local/Diretório: </strong><%= @archive.directory %> </p>
-           <p><strong>Volume </strong> <%= link_to @archive.volume, @archive.volume %></p>
-          <p> <strong> Ambiente </strong> <%= @archive.environment.upcase %> </p>
-          <p> <strong> Descrição: </strong> <%= @archive.description %> </p>
-
-    </div>
-  </div>
+<%- model_class = Archive -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @archive.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:size) %>:</strong></dt>
+  <dd><%= @archive.size %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:type_archive) %>:</strong></dt>
+  <dd><%= @archive.type_archive %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:resolution) %>:</strong></dt>
+  <dd><%= @archive.resolution %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:environment) %>:</strong></dt>
+  <dd><%= @archive.environment %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @archive.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:directory) %>:</strong></dt>
+  <dd><%= @archive.directory %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:volume_id) %>:</strong></dt>
+  <dd><%= @archive.volume_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:inserted_in) %>:</strong></dt>
+  <dd><%= @archive.inserted_in %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              archives_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_archive_path(@archive), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              archive_path(@archive),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

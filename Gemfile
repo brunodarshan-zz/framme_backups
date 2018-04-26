@@ -58,3 +58,6 @@ gem "devise", "~> 4.4"
 
 # Added at 2018-04-21 14:53:53 -0300 by darshan:
 gem "simple_form", "~> 4.0"
+
+# Added at 2018-04-26 09:34:03 -0300 by imacdecriacao:
+gem "twitter-bootstrap-rails", "~> 4.0"

@@ -3,28 +3,51 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   movies = Movie.create!([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create!(name: 'Luke', movie: movies.first)
 
-tera_16 = 16777216
 
-drobo = Volume.create(
+drobo = Volume.create!(
   name: 'DROBO',
   type_volume: 'RAID',
-  in_use: 8388608,
-  capacity: tera_16*4
+  capacity: 32000000
+)
+puts "ok #{drobo}"
+
+owc_bruno = Volume.create!(
+  name: 'owc_bruno',
+  type_volume: 'RAID',
+  capacity: 16000000
+)
+puts "ok #{owc_bruno}"
+hd_1_bruno = Volume.create!(
+  name: 'HD 1 Bruno Costa',
+  type_volume: :HD,
+  capacity:4000000
+)
+puts "ok #{hd_1_bruno}"
+hd_2_bruno = Volume.create!(
+  name: 'HD 2 Bruno Costa',
+  type_volume: :HD,
+  capacity: 40000000
 )
 
-raid_pauliram = Volume.create(
-  name: 'RAID Pauliram',
+puts "ok #{hd_2_bruno}"
+owc_pauliram = Volume.create!(
+  name: 'owc_pauliram',
   type_volume: 'RAID',
-  in_use: 0,
-  capacity: tera_16
+  capacity: 16000000
 )
-
-raid_bruno_costa = Volume.create(
-  name: 'RAID Bruno Costa',
-  type_volume: 'RAID',
-  in_use: 0,
-  capacity: tera_16
+puts "ok #{owc_pauliram}"
+hd_quaresma = Volume.create!(
+  name: 'Hd Quaresma',
+  type_volume: :HD,
+  capacity: 6000000
 )
+puts "ok #{hd_quaresma}"
+raid_ilha_color = Volume.create!(
+  name: 'ilha color',
+  type_volume: :RAID,
+  capacity: 8000000
+)
+puts "ok #{raid_ilha_color}"

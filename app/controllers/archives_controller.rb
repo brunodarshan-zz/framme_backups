@@ -25,6 +25,7 @@ class ArchivesController < ApplicationController
   # POST /archives.json
   def create
     @archive = Archive.new(archive_params)
+
     respond_to do |format|
       if @archive.save
         format.html { redirect_to @archive, notice: 'Archive was successfully created.' }
@@ -68,8 +69,6 @@ class ArchivesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def archive_params
-      params.require(:archive).permit(
-        :name, :type_archive, :size, :resolution, :environment, :directory, :description, :volume_id
-      )
+      params.require(:archive).permit(:name, :size, :tipe_archive, :resolution, :environment, :description, :directory, :volume_id, :inserted_in)
     end
 end

@@ -1,4 +1,45 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Volume -%>
+<div class="page-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <h1> <i class="<%= @volume.get_icon %>"></i> <%= @volume.name %></h1>
+      </div>
+      <div class="col-sm-4">
+        <br>
+        <%= link_to t('.back', :default => t("helpers.links.back")),
+                      volumes_path, :class => 'btn btn-default'  %>
+        <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_volume_path(@volume), :class => 'btn btn-default' %>
+        <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      volume_path(@volume),
+                      :method => 'delete',
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-danger' %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_volume_path(@volume) %> |
-<%= link_to 'Back', volumes_path %>
+<dl class="dl-vertical">
+  <dt>Espaço</dt>
+  <dd><%= @volume.in_use%> de <%= @volume.capacity %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:type_volume) %>:</strong></dt>
+  <dd><%= @volume.type_volume %></dd>
+  <hr>
+  <dl class="">
+    <dt>
+      Arquivos
+    </dt>
+    <dd>
+      <% if @volume.archives.any? %>
+        <% render 'archives/table_archives', model_class: Archive %>
+      <% else %>
+        <p>Não há arquivos associados a esse volume no sistema.</p>
+        <%= link_to "Cadastrar Arquivo",
+                    new_archive_path,
+                    :class => 'btn btn-primary' %>
+      <% end %>
+    </dd>
+  </dl>
+</dl>

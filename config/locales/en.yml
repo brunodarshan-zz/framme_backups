@@ -31,3 +31,25 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    models:
+      archive: "Arquivo"
+      volume: "Volume"
+    attributes:
+      archive:
+        name: "Nome"
+        type_archive: "Tipo"
+        size: "Tamanho"
+        description: "Descrição"
+        resolution: "Resolução"
+        environment: "Ambiente"
+        directory: "Diretório"
+        inserted_in: "Inserido em"
+
+      volume:
+        name: "Nome"
+        type_volume: "Tipo"
+        capacity: "Capacidade"
+    errors:
+      messages:
+        blank: "deve ser preenchido"

@@ -1,31 +1,43 @@
-
-
-<h1>Volumes</h1>
-
-
+<%- model_class = Volume -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <%= render partial: 'form' %>
+  </div>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:type_volume) %></th>
+      <th><%= model_class.human_attribute_name(:capacity) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
     <% @volumes.each do |volume| %>
-
-      <div class="columns">
-        <div class="column is-three-quarters">
-          <h5 class="title is-5">  <%= volume.name %></h5>
-
-          <%= volume.type_volume %>
-
-          <%= volume.in_use %> de <%= volume.get_capacity %>
-        </div>
-        <div class="column">
-          <%= link_to 'Show', volume, class: "button is-link" %>
-          <%= link_to 'Edit', edit_volume_path(volume), class: :button %>
-          <%= link_to 'Destroy', volume, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-danger" %>
-
-        </div>
-      </div>
-
-<hr>
+      <tr>
+        <td><%= link_to volume.name, volume_path(volume) %></td>
+        <td><%= volume.type_volume %></td>
+        <td><%= volume.in_use %> / <%= volume.get_capacity %></td>
+        <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      volume_path(volume), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_volume_path(volume), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      volume_path(volume),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Tem certeza?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Volume', new_volume_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_volume_path,
+            :class => 'btn btn-primary' %>

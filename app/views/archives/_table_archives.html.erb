@@ -1,0 +1,32 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:type_archive) %></th>
+      <th><%= model_class.human_attribute_name(:volume_id) %></th>
+      <th><%= model_class.human_attribute_name(:inserted_in) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @archives.each do |archive| %>
+      <tr>
+        <td><%= link_to archive.name, archive_path(archive) %></td>
+        <td><%= archive.type_archive %></td>
+        <td><%= archive.volume_id %></td>
+        <td><%= archive.inserted_in %></td>
+        <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      archive_path(archive), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_archive_path(archive), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      archive_path(archive),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

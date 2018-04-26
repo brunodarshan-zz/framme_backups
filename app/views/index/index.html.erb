@@ -1,26 +1,40 @@
 <div class="columns">
   <div class="column">
-    <div class="card">
-      <div class="card-content">
-        <h2 class="title is-2">Volumes</h2>
-        <span><%= Volume.count %> volumes cadastrados no sistema.</span>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="media">
+          <div class="media-left">
+            <i class="fas fa-server fa-4x"></i>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">Volumes</h4>
+            <span><%= Volume.count %> volumes cadastrados no sistema.</span>
+          </div>
+        </div>
       </div>
-      <div class="card-footer">
-        <%= link_to "Cadastrar", new_volume_path, class: "card-footer-item" %>
-        <%= link_to "Ver todos", volumes_path, class: "card-footer-item" %>
+      <div class="panel-footer">
+        <%= link_to "Cadastrar", new_volume_path, class: "btn btn-primary" %>
+        <%= link_to "Ver todos", volumes_path, class: "btn btn-default" %>
       </div>
     </div>
   </div>
 
   <div class="column ">
-    <div class="card">
-      <div class="card-content">
-        <h2 class="title is-2">Arquivos</h2>
-        <span><%= Archive.count %> arquivo cadastrados no sistema.</span>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="media">
+          <div class="media-left">
+            <i class="fas fa-file fa-4x"></i>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">Arquivos</h2>
+            <span><%= Archive.count %> arquivo cadastrados no sistema.</span>
+          </div>
+        </div>
       </div>
-      <div class="card-footer">
-        <%= link_to "Cadastrar", new_archive_path, class: "card-footer-item" %>
-        <%= link_to "Ver todos", archives_path, class: "card-footer-item" %>
+      <div class="panel-footer">
+        <%= link_to "Cadastrar", new_archive_path,  class: "btn btn-primary" %>
+        <%= link_to "Ver todos", archives_path, class: "btn btn-default" %>
       </div>
     </div>
   </div>

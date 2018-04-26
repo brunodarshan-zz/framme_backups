@@ -17,7 +17,7 @@ class ArchivesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create archive" do
     assert_difference('Archive.count') do
-      post archives_url, params: { archive: {  } }
+      post archives_url, params: { archive: { description: @archive.description, directory: @archive.directory, environment: @archive.environment, inserted_in: @archive.inserted_in, name: @archive.name, resolution: @archive.resolution, size: @archive.size, tipe_archive: @archive.tipe_archive, volume_id: @archive.volume_id } }
     end
 
     assert_redirected_to archive_url(Archive.last)
@@ -34,7 +34,7 @@ class ArchivesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update archive" do
-    patch archive_url(@archive), params: { archive: {  } }
+    patch archive_url(@archive), params: { archive: { description: @archive.description, directory: @archive.directory, environment: @archive.environment, inserted_in: @archive.inserted_in, name: @archive.name, resolution: @archive.resolution, size: @archive.size, tipe_archive: @archive.tipe_archive, volume_id: @archive.volume_id } }
     assert_redirected_to archive_url(@archive)
   end
 

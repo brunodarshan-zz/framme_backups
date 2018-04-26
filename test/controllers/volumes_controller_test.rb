@@ -17,7 +17,7 @@ class VolumesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create volume" do
     assert_difference('Volume.count') do
-      post volumes_url, params: { volume: {  } }
+      post volumes_url, params: { volume: { capacity: @volume.capacity, name: @volume.name, type_volume: @volume.type_volume } }
     end
 
     assert_redirected_to volume_url(Volume.last)
@@ -34,7 +34,7 @@ class VolumesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update volume" do
-    patch volume_url(@volume), params: { volume: {  } }
+    patch volume_url(@volume), params: { volume: { capacity: @volume.capacity, name: @volume.name, type_volume: @volume.type_volume } }
     assert_redirected_to volume_url(@volume)
   end
 

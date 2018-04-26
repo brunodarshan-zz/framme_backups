@@ -1,0 +1,18 @@
+<div class="list-group sidebar-nav">
+<%= link_to "Arquivos", archives_path, class: "list-group-item"  %>
+  <%= link_to "Volume", volumes_path, class: "list-group-item"  %>
+    <!-- <li><%= link_to "Link3", "/path3"  %></li> -->
+  <div class="list-group-item">
+    <h5>Pesquisa</h5>
+    <hr>
+    <form class="form form-vertical" action="<% search_path %>" method="post">
+      <label for="">Nome</label><br>
+      <input type="text" name="name" class="form-control" id="">
+      <label for="">Tipo</label>
+      <select class="form-control" name="">
+
+      </select>
+
+    </form>
+  </div>
+</div><!--/.well -->

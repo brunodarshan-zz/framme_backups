@@ -4,6 +4,7 @@ class VolumesController < ApplicationController
   # GET /volumes
   # GET /volumes.json
   def index
+    @volume = Volume.new
     @volumes = Volume.all
   end
 
@@ -69,8 +70,6 @@ class VolumesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def volume_params
-      params.require(:volume).permit(
-        :name, :type_volume, :in_use, :capacity
-      )
+      params.require(:volume).permit(:name, :type_volume, :capacity)
     end
 end
