@@ -24,6 +24,6 @@ test:
 
 production:
   <<: *default
-  username: backups
-  database: backups_production
+  username: jrojkicfchhoug
+  database: d76af0ak6qm46u
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
